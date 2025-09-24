@@ -3,6 +3,15 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# XCBase specific files
+xcbase
+xcbase_*
+report.txt
+log.txt
+key.txt
+test_input.txt
+pch_utf8.h
+
 # User-specific files
 *.suo
 *.user

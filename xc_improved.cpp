@@ -59,7 +59,7 @@ int main(int argc, char *argv[]) {
     int scr = 3;
     cout << "Selezionare Menu" << endl;
     SLEEP_MS(100);
-    cout << "Criptaggio Semplice(1), DeCriptaggio Semplice(2), Gestione da File(3), Criptaggio Sicuro(4)" << endl;
+    cout << "Criptaggio Semplice(1), DeCriptaggio Semplice(2), Gestione da File(3), Criptaggio Sicuro(4), Decriptaggio Sicuro(5)" << endl;
     logAp("avvio Programma Corretto");
     
     if (scanf("%d", &menu) != 1) {
@@ -192,6 +192,53 @@ int main(int argc, char *argv[]) {
             } else {
                 printf("Scrittura file riuscita. Chiave salvata in key.txt\n");
                 logAp("Scrittura file riuscita con chiave\n");
+            }
+            break;
+        }
+            
+        case 5:
+        {
+            logAp("Selezionato Menu Decriptaggio Sicuro\n");
+            cout << "Decriptaggio sicuro con chiave" << endl;
+            cout << "inserisci il testo criptato" << endl;
+            if (!secureScanf(Maxparola, sizeof(Maxparola))) {
+                printf("Errore di input\n");
+                return -1;
+            }
+            
+            int key;
+            cout << "inserisci la chiave di decriptaggio (o 0 per leggere da key.txt): ";
+            if (scanf("%d", &key) != 1) {
+                printf("Errore di input\n");
+                return -1;
+            }
+            
+            if (key == 0) {
+                // Try to read key from key.txt
+                ifstream keyFile("key.txt");
+                if (keyFile) {
+                    keyFile >> key;
+                    keyFile.close();
+                    cout << "Chiave letta da key.txt: " << key << endl;
+                } else {
+                    printf("Errore: Impossibile leggere key.txt\n");
+                    logAp("Errore lettura key.txt");
+                    return -1;
+                }
+            }
+            
+            string = xcOtSecure(Maxparola, key);
+            showProgressBar("Decriptaggio Sicuro");
+            printf("\nTesto decriptato: %s\n", string);
+            printf("Chiave utilizzata: %d\n\n", key);
+            
+            scr = Scritura(string);
+            if (scr != 0) {
+                printf("Impossibile salvare in report\n");
+                logAp("Impossibile salvare in report\n");
+            } else {
+                printf("Scrittura file riuscita\n");
+                logAp("Scrittura file riuscita\n");
             }
             break;
         }

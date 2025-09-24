@@ -7,7 +7,8 @@ XCBase è un semplice strumento di crittografia che permette di criptare e decri
 - **Criptaggio Semplice**: Algoritmo di cifratura Caesar migliorato
 - **Decriptaggio Semplice**: Decifratura del criptaggio semplice
 - **Gestione File**: Lettura e criptaggio/decriptaggio di file di testo
-- **Criptaggio Sicuro**: Crittografia XOR con chiave casuale (Nuovo!)
+- **Criptaggio Sicuro**: Crittografia XOR con chiave casuale
+- **Decriptaggio Sicuro**: Decifratura del criptaggio sicuro con chiave (Nuovo!)
 
 ## Compilazione
 
@@ -33,12 +34,28 @@ Scegli una delle opzioni disponibili:
 2. **Decriptaggio Semplice (2)**: Decripta una stringa criptata con l'algoritmo Caesar
 3. **Gestione da File (3)**: Legge un file e lo cripta/decripta
 4. **Criptaggio Sicuro (4)**: Usa crittografia XOR con chiave casuale
+5. **Decriptaggio Sicuro (5)**: Decripta testo criptato con il modo sicuro usando la chiave
 
 ## File di Output
 
 - `report.txt`: Contiene il risultato dell'ultima operazione
 - `log.txt`: Registro delle operazioni eseguite
 - `key.txt`: Chiave per il criptaggio sicuro (solo con opzione 4)
+
+## Utilizzo del Criptaggio/Decriptaggio Sicuro
+
+### Criptaggio Sicuro (Opzione 4)
+1. Inserisci il testo da criptare
+2. Il sistema genera automaticamente una chiave casuale
+3. Il testo viene criptato usando XOR e scrambling
+4. La chiave viene salvata in `key.txt` e il testo criptato in `report.txt`
+
+### Decriptaggio Sicuro (Opzione 5)
+1. Inserisci il testo criptato (es. da `report.txt`)
+2. Scegli come fornire la chiave:
+   - Inserisci `0` per leggere automaticamente da `key.txt`
+   - Inserisci il numero della chiave manualmente
+3. Il testo viene decriptato e salvato in `report.txt`
 
 ## Test
 
